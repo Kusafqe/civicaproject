@@ -1,0 +1,263 @@
+version: 2
+
+sources:
+  - name: matchstats
+    description: ""
+    database: alumno3_dev_bronze_db
+    schema: load
+
+    freshness:
+      warn_after: {count: 24, period: hour}
+      error_after: {count: 48, period: hour}
+
+    tables:
+      - name: matchstats
+        loaded_at_field: date_load
+        description: "Data about play off matches in LEC"
+        columns:
+          - name: player
+            data_type: varchar
+            description: ""
+          - name: role
+            data_type: varchar
+            description: ""
+          - name: team
+            data_type: varchar
+            description: ""
+          - name: opponent_team
+            data_type: varchar
+            description: ""
+          - name: opponent_player
+            data_type: varchar
+            description: ""
+          - name: date
+            data_type: date
+            description: ""
+          - name: round
+            data_type: varchar
+            description: ""
+          - name: day
+            data_type: varchar
+            description: ""
+          - name: patch
+            data_type: varchar
+            description: ""
+          - name: stage
+            data_type: varchar
+            description: ""
+          - name: no_game
+            data_type: number
+            description: ""
+          - name: all_games
+            data_type: number
+            description: ""
+          - name: format
+            data_type: varchar
+            description: ""
+          - name: game_of_day
+            data_type: varchar
+            description: ""
+          - name: side
+            data_type: varchar
+            description: ""
+          - name: time
+            data_type: time
+            description: ""
+          - name: ban
+            data_type: varchar
+            description: ""
+          - name: ban_opponent
+            data_type: varchar
+            description: ""
+          - name: pick
+            data_type: varchar
+            description: ""
+          - name: pick_opponent
+            data_type: varchar
+            description: ""
+          - name: champion
+            data_type: varchar
+            description: ""
+          - name: champion_opponent
+            data_type: varchar
+            description: ""
+          - name: outcome
+            data_type: varchar
+            description: ""
+          - name: kills_team
+            data_type: number
+            description: ""
+          - name: turrets_team
+            data_type: number
+            description: ""
+          - name: dragon_team
+            data_type: number
+            description: ""
+          - name: baron_team
+            data_type: number
+            description: ""
+          - name: level
+            data_type: number
+            description: ""
+          - name: kills
+            data_type: number
+            description: ""
+          - name: deaths
+            data_type: number
+            description: ""
+          - name: assists
+            data_type: number
+            description: ""
+          - name: kda
+            data_type: varchar
+            description: ""
+          - name: cs
+            data_type: number
+            description: ""
+          - name: cs_in_team_s_jungle
+            data_type: number
+            description: ""
+          - name: cs_in_enemy_jungle
+            data_type: number
+            description: ""
+          - name: csm
+            data_type: number
+            description: ""
+          - name: golds
+            data_type: number
+            description: ""
+          - name: gpm
+            data_type: number
+            description: ""
+          - name: gold_percent
+            data_type: number
+            description: ""
+          - name: vision_score
+            data_type: number
+            description: ""
+          - name: wards_placed
+            data_type: number
+            description: ""
+          - name: wards_destroyed
+            data_type: number
+            description: ""
+          - name: control_wards_purchased
+            data_type: number
+            description: ""
+          - name: detector_wards_placed
+            data_type: number
+            description: ""
+          - name: vspm
+            data_type: number
+            description: ""
+          - name: wpm
+            data_type: number
+            description: ""
+          - name: vwpm
+            data_type: number
+            description: ""
+          - name: wcpm
+            data_type: number
+            description: ""
+          - name: vs_percent
+            data_type: number
+            description: ""
+          - name: total_damage_to_champion
+            data_type: number
+            description: ""
+          - name: physical_damage
+            data_type: number
+            description: ""
+          - name: magic_damage
+            data_type: number
+            description: ""
+          - name: true_damage
+            data_type: number
+            description: ""
+          - name: dpm
+            data_type: number
+            description: ""
+          - name: dmg_percent
+            data_type: number
+            description: ""
+          - name: k_plus_a_per_minute
+            data_type: number
+            description: ""
+          - name: kp_percent
+            data_type: number
+            description: ""
+          - name: solo_kills
+            data_type: number
+            description: ""
+          - name: double_kills
+            data_type: number
+            description: ""
+          - name: triple_kills
+            data_type: number
+            description: ""
+          - name: quadra_kills
+            data_type: number
+            description: ""
+          - name: penta_kills
+            data_type: number
+            description: ""
+          - name: gd_at_15
+            data_type: number
+            description: ""
+          - name: csd_at_15
+            data_type: number
+            description: ""
+          - name: xpd_at_15
+            data_type: number
+            description: ""
+          - name: lvld_at_15
+            data_type: number
+            description: ""
+          - name: objectives_stolen
+            data_type: number
+            description: ""
+          - name: damage_dealt_to_turrets
+            data_type: number
+            description: ""
+          - name: damage_dealt_to_buildings
+            data_type: number
+            description: ""
+          - name: total_heal
+            data_type: number
+            description: ""
+          - name: total_heals_on_teammates
+            data_type: number
+            description: ""
+          - name: damage_self_mitigated
+            data_type: number
+            description: ""
+          - name: total_damage_shielded_on_teammates
+            data_type: number
+            description: ""
+          - name: time_ccing_others
+            data_type: number
+            description: ""
+          - name: total_time_cc_dealt
+            data_type: number
+            description: ""
+          - name: total_damage_taken
+            data_type: number
+            description: ""
+          - name: total_time_spent_dead
+            data_type: number
+            description: ""
+          - name: consumables_purchased
+            data_type: number
+            description: ""
+          - name: items_purchased
+            data_type: number
+            description: ""
+          - name: shutdown_bounty_collected
+            data_type: number
+            description: ""
+          - name: shutdown_bounty_lost
+            data_type: number
+            description: ""
+          - name: date_load
+            data_type: date
+            description: "date of load in data_warehouse"
