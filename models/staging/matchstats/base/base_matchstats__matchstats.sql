@@ -2,15 +2,22 @@ with
 
 source as (
 
-    select * from {{ source('matchstats', 'matchstats') }}
+    select 
+        *,
+        array_sort(array_construct(team, opponent_team)) as team_key_array,        
+        concat(team_key_array[0], '-', team_key_array[1], '_', date) as serie_key
+    from {{ source('matchstats', 'matchstats') }}
 
 ),
 
 renamed as (
 
     select
+        serie_key,
+        {{dbt_utils.generate_surrogate_key(['serie_key'])}} as id_serie,
+        {{dbt_utils.generate_surrogate_key(['no_game', 'game_of_day', 'date'])}} as id_game,
         {{dbt_utils.generate_surrogate_key(['player'])}} as id_player,
-        player as player_name,
+        player::varchar(50) as player_name,        
         role,
         {{dbt_utils.generate_surrogate_key(['team'])}} as id_team,
         team as team_name,
@@ -18,9 +25,8 @@ renamed as (
         {{dbt_utils.generate_surrogate_key(['opponent_team'])}} as id_opponent_team,
         opponent_player as opponent_player_name,
         CONVERT_TIMEZONE('UTC', date) AS date,
-        {{dbt_utils.generate_surrogate_key(['no_game', 'game_of_day', 'date'])}} as id_game,
         {{dbt_utils.generate_surrogate_key(['id_game', 'id_team'])}} as id_game_team_stats,
-        {{dbt_utils.generate_surrogate_key(['id_game', 'id_player'])}} as id_player_stats,
+        
         round,
         day as day_of_match,
         patch,
@@ -34,12 +40,14 @@ renamed as (
         {{dbt_utils.generate_surrogate_key(['ban'])}} as id_ban,
         ban,
         ban_opponent,
+        {{dbt_utils.generate_surrogate_key(['ban_opponent'])}} as id_opponent_ban,
         {{dbt_utils.generate_surrogate_key(['pick'])}} as id_pick,
         pick,
         pick_opponent,
+        {{dbt_utils.generate_surrogate_key(['champion'])}} as id_champion,
         champion,
         champion_opponent,
-        outcome, 
+        outcome,
         kills_team,
         turrets_team,
         dragon_team,
@@ -48,7 +56,7 @@ renamed as (
         kills,
         deaths,
         assists,
-        kda,
+        IFF(kda = 'Perfect_KDA', kda = '99', kda) as kda,
         cs,
         cs_in_team_s_jungle,
         cs_in_enemy_jungle,

@@ -9,16 +9,19 @@ source as (
 renamed as (
 
     select
-        
-        {{dbt_utils.generate_surrogate_key(['ban'])}} as id_ban,
+        id_game,
+        --id_team,
+        --id_ban,
         ban,
-        ban_opponent,
-        {{dbt_utils.generate_surrogate_key(['pick'])}} as id_pick,
-        pick,
-        pick_opponent,
-        champion,
-        champion_opponent,
+
        
+    from source
+    union all 
+    select
+        id_game,
+        --id_opponent_team,
+        --id_opponent_ban, 
+        ban_opponent
     from source
 
 )
