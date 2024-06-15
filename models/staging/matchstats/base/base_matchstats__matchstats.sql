@@ -25,8 +25,7 @@ renamed as (
         {{dbt_utils.generate_surrogate_key(['opponent_team'])}} as id_opponent_team,
         opponent_player as opponent_player_name,
         CONVERT_TIMEZONE('UTC', date) AS date,
-        {{dbt_utils.generate_surrogate_key(['id_game', 'id_team'])}} as id_game_team_stats,
-        
+        {{dbt_utils.generate_surrogate_key(['id_game', 'id_team'])}} as id_game_team_stats,        
         round,
         day as day_of_match,
         patch,
@@ -56,7 +55,7 @@ renamed as (
         kills,
         deaths,
         assists,
-        IFF(kda = 'Perfect_KDA', kda = '99', kda) as kda,
+        --IFF(kda = 'Perfect_KDA', kda = '99', kda) as kda,
         cs,
         cs_in_team_s_jungle,
         cs_in_enemy_jungle,

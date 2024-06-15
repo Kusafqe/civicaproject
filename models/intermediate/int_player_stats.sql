@@ -8,11 +8,10 @@ source as (
 
 renamed as (
 
-    select
-        --id_player_stats,
+    select        
         id_player,
         id_game,
-        
+        id_champion,
         level,
         kills,
         deaths,

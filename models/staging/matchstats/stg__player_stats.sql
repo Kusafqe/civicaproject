@@ -8,16 +8,17 @@ source as (
 
 renamed as (
 
-    select
-        
+    select        
         id_player,                          
         id_game,
-        
+        id_champion,
         level,
         kills,
         deaths,
         assists,
-        kda::decimal(10,2) as kda,
+        ((kills + assists) / 
+            IFF(deaths = 0, 1, deaths) 
+        ) as kda,
         cs,
         cs_in_team_s_jungle,
         cs_in_enemy_jungle,
