@@ -2,7 +2,7 @@ version: 2
 
 sources:
   - name: matchstats
-    description: ""
+    description: "Source data about play off matches in LEC"
     database: alumno3_dev_bronze_db
     schema: load
 
@@ -17,247 +17,251 @@ sources:
         columns:
           - name: player
             data_type: varchar
-            description: ""
+            description: "Name of the player"
+            tests:
+              - not_null
           - name: role
             data_type: varchar
-            description: ""
+            description: "Role of the player"
           - name: team
             data_type: varchar
-            description: ""
+            description: "Name of the player's team"
           - name: opponent_team
             data_type: varchar
-            description: ""
+            description: "Name of the opposing team"
           - name: opponent_player
             data_type: varchar
-            description: ""
+            description: "Name of the opposing player"
           - name: date
             data_type: date
-            description: ""
+            description: "Date of the match"
+            tests:
+              - not_null
           - name: round
             data_type: varchar
-            description: ""
+            description: "Round of the tournament"
           - name: day
             data_type: varchar
-            description: ""
+            description: "Day of the match"
           - name: patch
             data_type: varchar
-            description: ""
+            description: "Patch version of the game during the match"
           - name: stage
             data_type: varchar
-            description: ""
+            description: "Stage of the tournament"
           - name: no_game
             data_type: number
-            description: ""
+            description: "Number of the game in the series"
           - name: all_games
             data_type: number
-            description: ""
+            description: "Total number of games in the series"
           - name: format
             data_type: varchar
-            description: ""
+            description: "Format of the series (e.g., BO1, BO3, BO5)"
           - name: game_of_day
             data_type: varchar
-            description: ""
+            description: "Game number of the day"
           - name: side
             data_type: varchar
-            description: ""
+            description: "Side of the map the team is on (blue/red)"
           - name: time
             data_type: time
-            description: ""
+            description: "Time when the match started"
           - name: ban
             data_type: varchar
-            description: ""
+            description: "Champion banned by the player's team"
           - name: ban_opponent
             data_type: varchar
-            description: ""
+            description: "Champion banned by the opponent team"
           - name: pick
             data_type: varchar
-            description: ""
+            description: "Champion picked by the player's team"
           - name: pick_opponent
             data_type: varchar
-            description: ""
+            description: "Champion picked by the opponent team"
           - name: champion
             data_type: varchar
-            description: ""
+            description: "Champion played by the player"
           - name: champion_opponent
             data_type: varchar
-            description: ""
+            description: "Champion played by the opposing player"
           - name: outcome
             data_type: varchar
-            description: ""
+            description: "Match outcome (win/loss)"
           - name: kills_team
             data_type: number
-            description: ""
+            description: "Total kills by the player's team"
           - name: turrets_team
             data_type: number
-            description: ""
+            description: "Total turrets destroyed by the player's team"
           - name: dragon_team
             data_type: number
-            description: ""
+            description: "Total dragons killed by the player's team"
           - name: baron_team
             data_type: number
-            description: ""
+            description: "Total barons killed by the player's team"
           - name: level
             data_type: number
-            description: ""
+            description: "Level of the player at the end of the match"
           - name: kills
             data_type: number
-            description: ""
+            description: "Total kills by the player"
           - name: deaths
             data_type: number
-            description: ""
+            description: "Total deaths of the player"
           - name: assists
             data_type: number
-            description: ""
+            description: "Total assists by the player"
           - name: kda
             data_type: varchar
-            description: ""
+            description: "KDA (Kills/Deaths/Assists) ratio of the player"
           - name: cs
             data_type: number
-            description: ""
+            description: "Total creep score (CS) of the player"
           - name: cs_in_team_s_jungle
             data_type: number
-            description: ""
+            description: "Creep score in the player's team's jungle"
           - name: cs_in_enemy_jungle
             data_type: number
-            description: ""
+            description: "Creep score in the enemy's jungle"
           - name: csm
             data_type: number
-            description: ""
+            description: "Creep score per minute"
           - name: golds
             data_type: number
-            description: ""
+            description: "Total gold earned by the player"
           - name: gpm
             data_type: number
-            description: ""
+            description: "Gold per minute"
           - name: gold_percent
             data_type: number
-            description: ""
+            description: "Percentage of the team's total gold earned by the player"
           - name: vision_score
             data_type: number
-            description: ""
+            description: "Vision score of the player"
           - name: wards_placed
             data_type: number
-            description: ""
+            description: "Total wards placed by the player"
           - name: wards_destroyed
             data_type: number
-            description: ""
+            description: "Total wards destroyed by the player"
           - name: control_wards_purchased
             data_type: number
-            description: ""
+            description: "Total control wards purchased by the player"
           - name: detector_wards_placed
             data_type: number
-            description: ""
+            description: "Total detector wards placed by the player"
           - name: vspm
             data_type: number
-            description: ""
+            description: "Vision score per minute"
           - name: wpm
             data_type: number
-            description: ""
+            description: "Wards placed per minute"
           - name: vwpm
             data_type: number
-            description: ""
+            description: "Vision wards placed per minute"
           - name: wcpm
             data_type: number
-            description: ""
+            description: "Wards cleared per minute"
           - name: vs_percent
             data_type: number
-            description: ""
+            description: "Vision score percentage"
           - name: total_damage_to_champion
             data_type: number
-            description: ""
+            description: "Total damage dealt to champions"
           - name: physical_damage
             data_type: number
-            description: ""
+            description: "Total physical damage dealt"
           - name: magic_damage
             data_type: number
-            description: ""
+            description: "Total magic damage dealt"
           - name: true_damage
             data_type: number
-            description: ""
+            description: "Total true damage dealt"
           - name: dpm
             data_type: number
-            description: ""
+            description: "Damage per minute"
           - name: dmg_percent
             data_type: number
-            description: ""
+            description: "Percentage of total team damage dealt by the player"
           - name: k_plus_a_per_minute
             data_type: number
-            description: ""
+            description: "Kills plus assists per minute"
           - name: kp_percent
             data_type: number
-            description: ""
+            description: "Kill participation percentage"
           - name: solo_kills
             data_type: number
-            description: ""
+            description: "Total solo kills by the player"
           - name: double_kills
             data_type: number
-            description: ""
+            description: "Total double kills by the player"
           - name: triple_kills
             data_type: number
-            description: ""
+            description: "Total triple kills by the player"
           - name: quadra_kills
             data_type: number
-            description: ""
+            description: "Total quadra kills by the player"
           - name: penta_kills
             data_type: number
-            description: ""
+            description: "Total penta kills by the player"
           - name: gd_at_15
             data_type: number
-            description: ""
+            description: "Gold difference at 15 minutes"
           - name: csd_at_15
             data_type: number
-            description: ""
+            description: "Creep score difference at 15 minutes"
           - name: xpd_at_15
             data_type: number
-            description: ""
+            description: "Experience difference at 15 minutes"
           - name: lvld_at_15
             data_type: number
-            description: ""
+            description: "Level difference at 15 minutes"
           - name: objectives_stolen
             data_type: number
-            description: ""
+            description: "Total objectives stolen"
           - name: damage_dealt_to_turrets
             data_type: number
-            description: ""
+            description: "Total damage dealt to turrets"
           - name: damage_dealt_to_buildings
             data_type: number
-            description: ""
+            description: "Total damage dealt to buildings"
           - name: total_heal
             data_type: number
-            description: ""
+            description: "Total healing done by the player"
           - name: total_heals_on_teammates
             data_type: number
-            description: ""
+            description: "Total healing done on teammates"
           - name: damage_self_mitigated
             data_type: number
-            description: ""
+            description: "Total damage self-mitigated"
           - name: total_damage_shielded_on_teammates
             data_type: number
-            description: ""
+            description: "Total damage shielded on teammates"
           - name: time_ccing_others
             data_type: number
-            description: ""
+            description: "Total time spent crowd controlling others"
           - name: total_time_cc_dealt
             data_type: number
-            description: ""
+            description: "Total crowd control dealt"
           - name: total_damage_taken
             data_type: number
-            description: ""
+            description: "Total damage taken"
           - name: total_time_spent_dead
             data_type: number
-            description: ""
+            description: "Total time spent dead"
           - name: consumables_purchased
             data_type: number
-            description: ""
+            description: "Total consumables purchased"
           - name: items_purchased
             data_type: number
-            description: ""
+            description: "Total items purchased"
           - name: shutdown_bounty_collected
             data_type: number
-            description: ""
+            description: "Total shutdown bounty collected"
           - name: shutdown_bounty_lost
             data_type: number
-            description: ""
+            description: "Total shutdown bounty lost"
           - name: date_load
             data_type: date
-            description: "date of load in data_warehouse"
+            description: "Date when the data was loaded into the data warehouse"

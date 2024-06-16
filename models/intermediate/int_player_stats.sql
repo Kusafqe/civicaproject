@@ -2,23 +2,21 @@ with
 
 source as (
 
-    select * from {{ ref('base_matchstats__matchstats') }}
+    select * from {{ ref('stg__player_stats') }}
 
 ),
 
 renamed as (
 
     select        
-        id_player,                          
+        id_player,
         id_game,
         id_champion,
         level,
         kills,
         deaths,
         assists,
-        ((kills + assists) / 
-            IFF(deaths = 0, 1, deaths) 
-        ) as kda,
+        kda,
         cs,
         cs_in_team_s_jungle,
         cs_in_enemy_jungle,
