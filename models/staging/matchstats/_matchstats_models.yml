@@ -1,0 +1,223 @@
+version: 2
+
+models:
+  - name: stg__champion
+    description: "Show all the champs used in the competition"
+    columns:
+      - name: id_champion
+        description: "Champion's id"
+      - name: champion
+        description: "Champion's name"
+
+  - name: stg__game_team_stats
+    description: "Provides team game statistics for each game."
+    columns:
+      - name: id_game_team_stats
+        description: "Unique identifier for the game team stats."
+      - name: id_game
+        description: "Unique identifier for the game."
+      - name: id_team
+        description: "Unique identifier for the team."
+      - name: outcome
+        description: "The outcome of the game for the team (e.g., win or loss)."
+      - name: kills_team
+        description: "Number of kills achieved by the team."
+      - name: turrets_team
+        description: "Number of turrets destroyed by the team."
+      - name: dragon_team
+        description: "Number of dragons slain by the team."
+      - name: baron_team
+        description: "Number of Barons slain by the team."
+      - name: side
+        description: "The side of the map the team started on (e.g., blue or red)."
+
+  - name: stg__player
+    description: "Provides player information including their role and team."
+    columns:
+      - name: id_player
+        description: "Unique identifier for the player."
+      - name: player_name
+        description: "Name of the player."
+      - name: id_role
+        description: "Surrogate key generated for the role of the player."
+      - name: role
+        description: "Role of the player in the game (e.g., ADC, Support)."
+      - name: id_team
+        description: "Unique identifier for the team."
+
+
+  - name: stg__player_stats
+    description: "Provides detailed statistics for each player in each game."
+    columns:
+      - name: id_player
+        description: "Unique identifier for the player."
+      - name: id_game
+        description: "Unique identifier for the game."
+      - name: id_champion
+        description: "Unique identifier for the champion played by the player."
+      - name: level
+        description: "Level of the player in the game."
+      - name: kills
+        description: "Number of kills achieved by the player."
+      - name: deaths
+        description: "Number of deaths of the player."
+      - name: assists
+        description: "Number of assists made by the player."
+      - name: kda
+        description: "Kill/Death/Assist ratio."
+      - name: cs
+        description: "Total creep score of the player."
+      - name: cs_in_team_s_jungle
+        description: "Creep score in the team's jungle."
+      - name: cs_in_enemy_jungle
+        description: "Creep score in the enemy's jungle."
+      - name: cs_per_minute
+        description: "Creep score per minute."
+      - name: player_gold
+        description: "Total gold earned by the player."
+      - name: gold_per_minute
+        description: "Gold earned per minute."
+      - name: gold_percent
+        description: "Percentage of team's gold earned by the player."
+      - name: vision_score
+        description: "Vision score of the player."
+      - name: wards_placed
+        description: "Number of wards placed by the player."
+      - name: wards_destroyed
+        description: "Number of wards destroyed by the player."
+      - name: control_wards_purchased
+        description: "Number of control wards purchased by the player."
+      - name: detector_wards_placed
+        description: "Number of detector wards placed by the player."
+      - name: vision_score_per_minute
+        description: "Vision score per minute."
+      - name: wards_placed_per_minute
+        description: "Wards placed per minute."
+      - name: vision_wards_placed_per_minute
+        description: "Vision wards placed per minute."
+      - name: control_wards_placed_per_minute
+        description: "Control wards placed per minute."
+      - name: vision_score_percent
+        description: "Percentage of team's vision score contributed by the player."
+      - name: total_damage_to_champion
+        description: "Total damage dealt to champions."
+      - name: physical_damage
+        description: "Total physical damage dealt."
+      - name: magic_damage
+        description: "Total magic damage dealt."
+      - name: true_damage
+        description: "Total true damage dealt."
+      - name: damage_per_minute
+        description: "Damage dealt per minute."
+      - name: damage_percent
+        description: "Percentage of team's damage contributed by the player."
+      - name: kills_plus_assits_per_minute
+        description: "Kills plus assists per minute."
+      - name: kill_participation
+        description: "Percentage of team's kills in which the player participated."
+      - name: solo_kills
+        description: "Number of solo kills achieved by the player."
+      - name: double_kills
+        description: "Number of double kills achieved by the player."
+      - name: triple_kills
+        description: "Number of triple kills achieved by the player."
+      - name: quadra_kills
+        description: "Number of quadra kills achieved by the player."
+      - name: penta_kills
+        description: "Number of penta kills achieved by the player."
+      - name: gold_difference_at_15
+        description: "Gold difference at 15 minutes."
+      - name: cs_difference_at_15
+        description: "Creep score difference at 15 minutes."
+      - name: xp_difference_at_15
+        description: "Experience points difference at 15 minutes."
+      - name: level_difference_at_15
+        description: "Level difference at 15 minutes."
+      - name: objectives_stolen
+        description: "Number of objectives stolen by the player."
+      - name: damage_dealt_to_turrets
+        description: "Total damage dealt to turrets."
+      - name: damage_dealt_to_buildings
+        description: "Total damage dealt to buildings."
+      - name: total_heal
+        description: "Total amount of healing done by the player."
+      - name: total_heals_on_teammates
+        description: "Total amount of healing done on teammates."
+      - name: damage_self_mitigated
+        description: "Total amount of damage self-mitigated."
+      - name: total_damage_shielded_on_teammates
+        description: "Total damage shielded on teammates."
+      - name: time_ccing_others
+        description: "Total time spent crowd-controlling others."
+      - name: total_time_cc_dealt
+        description: "Total crowd-control time dealt."
+      - name: total_damage_taken
+        description: "Total damage taken by the player."
+      - name: total_time_spent_dead
+        description: "Total time the player spent dead."
+      - name: consumables_purchased
+        description: "Number of consumables purchased by the player."
+      - name: items_purchased
+        description: "Number of items purchased by the player."
+      - name: shutdown_bounty_collected
+        description: "Total shutdown bounty collected."
+      - name: shutdown_bounty_lost
+        description: "Total shutdown bounty lost."
+      - name: date_load
+        description: "Date the data was loaded."
+
+  - name: stg__team_game
+    description: >
+     "Provides distinct information for each game, 
+     including team details and match metadata."
+    columns:
+      - name: id_game
+        description: "Unique identifier for the game."
+      - name: id_team
+        description: "Unique identifier for the team."
+      - name: id_opponent_team
+        description: "Unique identifier for the opponent team."
+      - name: date
+        description: "Date of the game."
+      - name: round
+        description: "Round in which the game was played."
+      - name: day_of_match
+        description: "Day of the match."
+      - name: patch
+        description: "Game patch version during which the game was played."
+      - name: stage
+        description: "Stage of the tournament or league."
+      - name: game_number
+        description: "Number of the game in the series."
+      - name: total_games_match
+        description: "Total number of games in the match series."
+      - name: match_format
+        description: "Format of the match bo3 or bo5."
+      - name: game_of_day
+        description: "The specific game of the day."
+      - name: game_duration
+        description: "Duration of the game."
+
+  - name: stg__match
+    description: "This model provides information on match winners, including match metadata and winning team details."
+    columns:
+      - name: serie_key
+        description: "Unique key for the series."
+      - name: id_serie
+        description: "Unique identifier for the series."
+      - name: id_team_winner
+        description: "Unique identifier for the winning team."
+      - name: round
+        description: "Round in which the match was played."
+      - name: day_of_match
+        description: "Day of the match."
+      - name: patch
+        description: "Game patch version during which the match was played."
+      - name: stage
+        description: "Stage of the tournament or league."
+      - name: total_games_match
+        description: "Total number of games in the match series."
+      - name: match_format
+        description: "Format of the match (e.g., Best of 3)."
+      - name: date
+        description: "Date of the match."

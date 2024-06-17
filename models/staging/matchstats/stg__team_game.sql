@@ -10,9 +10,9 @@ renamed as (
 
     select distinct
         id_game,        
-        id_team,        
+        id_team,
         id_opponent_team,        
-        date,                
+        date,
         round,
         day_of_match,
         patch,
@@ -21,8 +21,7 @@ renamed as (
         total_games_match,
         match_format,
         game_of_day,        
-        game_duration,
-        outcome
+        game_duration
         
 
     from source

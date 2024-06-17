@@ -4,6 +4,7 @@ source as (
 
     select 
         *,
+        
         array_sort(array_construct(team, opponent_team)) as team_key_array,        
         concat(team_key_array[0], '-', team_key_array[1], '_', date) as serie_key
     from {{ source('matchstats', 'matchstats') }}
