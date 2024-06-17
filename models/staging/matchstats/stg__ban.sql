@@ -13,7 +13,6 @@ renamed as (
         --id_team,
         --id_ban,
         ban,
-
        
     from source
     union all 

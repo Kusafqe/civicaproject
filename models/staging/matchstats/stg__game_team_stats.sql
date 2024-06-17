@@ -8,8 +8,10 @@ source as (
 
 renamed as (
 
-    select
+    select distinct
         id_game_team_stats,
+        id_game,
+        id_team,
         outcome, 
         kills_team,
         turrets_team,
