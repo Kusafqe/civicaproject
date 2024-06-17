@@ -2,13 +2,13 @@ with
 
 source as (
 
-    select * from {{ ref('base_matchstats__matchstats') }}
+    select * from {{ ref('stg__game_team_stats') }}
 
 ),
 
 renamed as (
 
-    select distinct
+    select 
         id_game_team_stats,
         id_game,
         id_team,

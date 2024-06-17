@@ -1,0 +1,93 @@
+version: 2
+
+models:
+  - name: dim_champion
+    description: "This model provides a list of champions with their unique identifiers."
+    columns:
+      - name: id_champion
+        description: "Unique identifier for the champion."        
+      - name: champion
+        description: "Name of the champion."
+
+  - name: dim_date
+    description: "This model provides a date dimension table with year, month, and day extracted from the date."
+    columns:
+      - name: date
+        description: "The date value."
+      - name: year
+        description: "The year extracted from the date."
+      - name: month
+        description: "The month extracted from the date."
+      - name: day
+        description: "The day extracted from the date."
+
+  - name: dim_match
+    description: "This model provides detailed information about matches."
+    columns:
+      - name: serie_key
+        description: "Unique key for the series."
+      - name: id_serie
+        description: "Unique identifier for the series."
+      - name: id_team_winner
+        description: "Unique identifier for the winning team of the series."
+        tests:
+          - relationships:
+              to: ref('dim_team')
+              field: id_team
+      - name: round
+        description: "Round of the match."
+      - name: patch
+        description: "Patch version during which the match was played."
+      - name: stage
+        description: "Stage of the tournament or league."
+      - name: total_games_match
+        description: "Total number of games in the match series."
+      - name: match_format
+        description: "Format of the match (e.g., Best of 3)."
+      - name: date
+        description: "Date of the match."
+
+  - name: dim_player
+    description: "This model provides information about players, including their roles and team affiliations."
+    columns:
+      - name: id_player
+        description: "Unique identifier for the player."
+      - name: player_name
+        description: "Name of the player."
+      - name: role
+        description: "Role of the player."
+      - name: id_team
+        description: "Unique identifier for the team to which the player belongs."
+        tests:
+          - relationships:
+              to: ref('dim_team')
+              field: id_team
+
+  - name: dim_team
+    description: "This model provides distinct team information."
+    columns:
+      - name: id_team
+        description: "Unique identifier for the team."
+      - name: team_name
+        description: "Name of the team."
+
+  - name: fct_ban
+    description: "This model provides information about bans in games, including ban identifiers, game identifiers, team identifiers, and banned champion."
+    columns:
+      - name: id_ban
+        description: "Unique identifier for the ban."
+      - name: id_game
+        description: "Unique identifier for the game in which the ban occurred."
+        tests:
+          - relationships:
+              to: ref('dim_game')
+              field: id_game
+      - name: id_team
+        description: "Unique identifier for the team that performed the ban."
+        tests:
+          - relationships:
+              to: ref('dim_team')
+              field: id_team
+      - name: ban
+        description: "Name of the champion that was banned."
+

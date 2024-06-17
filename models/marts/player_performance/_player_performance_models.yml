@@ -1,0 +1,76 @@
+version: 2
+
+models:
+  - name: player_champion_stats
+    description: "This model provides aggregated statistics for players by champion, including performance metrics and damage details."
+    columns:
+      - name: id_champion
+        description: "Unique identifier for the champion."
+        tests:
+          - relationships:
+              to: ref('dim_champion')
+              field: id_champion
+      - name: champion
+        description: "Name of the champion."
+      - name: id_player
+        description: "Unique identifier for the player."
+        tests:
+          - relationships:
+              to: ref('dim_player')
+              field: id_player
+      - name: player_name
+        description: "Name of the player."
+      - name: times_played
+        description: "Number of times the player has played the champion."
+      - name: average_level
+        description: "Average level of the player when playing the champion."
+      - name: total_kills
+        description: "Total number of kills achieved by the player with the champion."
+      - name: total_deaths
+        description: "Total number of deaths of the player with the champion."
+      - name: total_assists
+        description: "Total number of assists made by the player with the champion."
+      - name: average_kda
+        description: "Average Kill/Death/Assist ratio of the player with the champion."
+      - name: total_damage_to_champion
+        description: "Total damage dealt to champions by the player with the champion."
+      - name: total_phisical_damage
+        description: "Total physical damage dealt by the player with the champion."
+      - name: total_magic_damage
+        description: "Total magic damage dealt by the player with the champion."
+      - name: total_true_damage
+        description: "Total true damage dealt by the player with the champion."
+      - name: average_damage_per_minute
+        description: "Average damage dealt per minute by the player with the champion."
+      - name: total_damage_dealt_to_turrets
+        description: "Total damage dealt to turrets by the player with the champion."
+      - name: total_damage_taken
+        description: "Total damage taken by the player when playing the champion."
+
+  - name: player_champion_stats
+    description: "This model provides aggregated player statistics by champion, including average and total metrics."
+    columns:
+      - name: id_player
+        description: "Unique identifier for the player."
+      - name: id_champion
+        description: "Unique identifier for the champion."
+        tests:
+          - relationships:
+              to: ref('dim_champion')
+              field: id_champion
+      - name: average_cs
+        description: "Average creep score (CS) for the player when playing the champion."
+      - name: average_cs_per_minute
+        description: "Average CS per minute for the player when playing the champion."
+      - name: average_player_gold
+        description: "Average gold earned by the player when playing the champion."
+      - name: average_gold_per_minute
+        description: "Average gold earned per minute by the player when playing the champion."
+      - name: average_gold_difference_at_15
+        description: "Average gold difference at 15 minutes for the player when playing the champion."
+      - name: average_cs_difference_at_15
+        description: "Average CS difference at 15 minutes for the player when playing the champion."
+      - name: total_shutdown_bounty_collected
+        description: "Total shutdown bounty collected by the player when playing the champion."
+      - name: date_load
+        description: "Earliest date when the data was loaded."

@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: game_team_stats
+    description: "This model provides team statistics for each game, including outcomes and various in-game metrics."
+    columns:
+      - name: id_game_team_stats
+        description: "Unique identifier for the game team statistics entry."
+      - name: id_game
+        description: "Unique identifier for the game."
+        tests:
+          - relationships:
+              to: ref('dim_game')
+              field: id_game
+      - name: id_team
+        description: "Unique identifier for the team."
+        tests:
+          - relationships:
+              to: ref('dim_team')
+              field: id_team
+      - name: outcome
+        description: "Outcome of the game for the team (e.g., Win or Loss)."
+      - name: kills_team
+        description: "Total number of kills by the team in the game."
+      - name: turrets_team
+        description: "Total number of turrets destroyed by the team in the game."
+      - name: dragon_team
+        description: "Total number of dragons taken by the team in the game."
+      - name: baron_team
+        description: "Total number of barons taken by the team in the game."
+      - name: side
+        description: "Side of the map the team started on (e.g., Blue or Red)."
+      - name: date_load
+        description: "Date when the data was loaded."
+

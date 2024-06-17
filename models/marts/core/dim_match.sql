@@ -13,8 +13,8 @@ renamed as (
     select
         serie_key,
         id_serie,
+        id_team_winner,
         round,
-        --day_of_match, no es interesante 
         patch,
         stage,
         total_games_match,

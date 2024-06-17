@@ -2,17 +2,17 @@ with
 
 source as (
 
-    select distinct * 
-    from {{ ref('stg__player') }}
+    select * from {{ ref('stg__ban') }}
 
 ),
 
 renamed as (
 
     select
-        id_role
-        role,
-        
+        id_ban,
+        id_game,
+        id_team,        
+        ban
         
 
     from source
