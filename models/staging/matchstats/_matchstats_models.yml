@@ -221,3 +221,15 @@ models:
         description: "Format of the match (e.g., Best of 3)."
       - name: date
         description: "Date of the match."
+
+  - name: stg__ban
+    description: "This model provides information on bans in each game, including the team and game details."
+    columns:
+      - name: id_ban
+        description: "Unique identifier for the ban."
+      - name: id_game
+        description: "Unique identifier for the game."
+      - name: id_team
+        description: "Unique identifier for the team."
+      - name: ban
+        description: "Name of the champion that was banned."

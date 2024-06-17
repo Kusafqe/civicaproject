@@ -9,18 +9,12 @@ source as (
 renamed as (
 
     select
+        id_ban,
         id_game,
-        --id_team,
-        --id_ban,
-        ban,
-       
-    from source
-    union all 
-    select
-        id_game,
-        --id_opponent_team,
-        --id_opponent_ban, 
-        ban_opponent
+        id_team,        
+        ban
+        
+
     from source
 
 )

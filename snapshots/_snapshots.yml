@@ -1,0 +1,8 @@
+version: 2
+
+snapshots:
+  - name: dim_player_snapshot
+    strategy: timestamp
+    unique_key: id_player
+    updated_at: updated_at
+    source_table: ref('dim_player')
