@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: player_champion_stats
+  - name: aggr_player_damage_by_champion
     description: "This model provides aggregated statistics for players by champion, including performance metrics and damage details."
     columns:
       - name: id_champion
@@ -47,7 +47,7 @@ models:
       - name: total_damage_taken
         description: "Total damage taken by the player when playing the champion."
 
-  - name: player_champion_stats
+  - name: aggr_player_gold_by_champion
     description: "This model provides aggregated player statistics by champion, including average and total metrics."
     columns:
       - name: id_player
