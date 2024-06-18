@@ -54,7 +54,7 @@ models:
         description: "Unique identifier for the player."
       - name: player_name
         description: "Name of the player."
-      - name: role
+      - name: id_role
         description: "Role of the player."
       - name: id_team
         description: "Unique identifier for the team to which the player belongs."
@@ -62,6 +62,13 @@ models:
           - relationships:
               to: ref('dim_team')
               field: id_team
+  - name: dim_role
+    description: "This model provides information about players, including their roles and team affiliations."
+    columns:
+      - name: id_role
+        description: "Unique identifier for the role."
+      - name: role
+        description: "Role of the player."
 
   - name: dim_team
     description: "This model provides distinct team information."
