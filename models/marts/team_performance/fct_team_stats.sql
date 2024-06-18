@@ -1,3 +1,12 @@
+{{
+    config(
+        materialized='incremental',
+        unique_key='id_game_team_stats',
+        on_schema_change='fail'
+    )
+}}
+
+
 with 
 
 source as (
@@ -24,3 +33,10 @@ renamed as (
 )
 
 select * from renamed
+
+
+{% if is_incremental() %}
+
+  where date_load > (select max(date_load) from {{ this }})
+
+{% endif %}

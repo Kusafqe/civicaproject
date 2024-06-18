@@ -9,6 +9,7 @@ source as (
 renamed as (
 
     select distinct
+        id_serie,
         id_game,        
         id_team,
         id_opponent_team,        

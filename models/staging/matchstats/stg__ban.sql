@@ -12,7 +12,8 @@ renamed as (
         id_ban,
         id_game,
         id_team,        
-        ban
+        ban,
+        date_load
         
 
     from source
