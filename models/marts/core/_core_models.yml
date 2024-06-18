@@ -91,3 +91,142 @@ models:
       - name: ban
         description: "Name of the champion that was banned."
 
+
+  - name: fct_player_stats
+    description: "This model provides detailed statistics for players in each game, including performance metrics and gameplay details."
+    columns:
+      - name: id_player
+        description: "Unique identifier for the player."
+        tests:
+          - relationships:
+              to: ref('dim_player')
+              field: id_player
+      - name: id_game
+        description: "Unique identifier for the game."
+        tests:
+          - relationships:
+              to: ref('dim_game')
+              field: id_game
+      - name: id_champion
+        description: "Unique identifier for the champion."
+        tests:
+          - relationships:
+              to: ref('dim_champion')
+              field: id_champion
+      - name: level
+        description: "Level of the player during the game."
+      - name: kills
+        description: "Number of kills by the player in the game."
+      - name: deaths
+        description: "Number of deaths of the player in the game."
+      - name: assists
+        description: "Number of assists by the player in the game."
+      - name: kda
+        description: "Kill/Death/Assist ratio for the player in the game."
+      - name: cs
+        description: "Creep score (CS) for the player in the game."
+      - name: cs_in_team_s_jungle
+        description: "CS obtained by the player in their team's jungle."
+      - name: cs_in_enemy_jungle
+        description: "CS obtained by the player in the enemy's jungle."
+      - name: cs_per_minute
+        description: "CS per minute for the player in the game."
+      - name: player_gold
+        description: "Total gold earned by the player in the game."
+      - name: gold_per_minute
+        description: "Gold earned per minute by the player in the game."
+      - name: gold_percent
+        description: "Percentage of the team's total gold earned by the player."
+      - name: vision_score
+        description: "Vision score of the player in the game."
+      - name: wards_placed
+        description: "Number of wards placed by the player in the game."
+      - name: wards_destroyed
+        description: "Number of wards destroyed by the player in the game."
+      - name: control_wards_purchased
+        description: "Number of control wards purchased by the player in the game."
+      - name: detector_wards_placed
+        description: "Number of detector wards placed by the player in the game."
+      - name: vision_score_per_minute
+        description: "Vision score per minute for the player in the game."
+      - name: wards_placed_per_minute
+        description: "Wards placed per minute by the player in the game."
+      - name: vision_wards_placed_per_minute
+        description: "Vision wards placed per minute by the player in the game."
+      - name: control_wards_placed_per_minute
+        description: "Control wards placed per minute by the player in the game."
+      - name: vision_score_percent
+        description: "Percentage of the team's total vision score contributed by the player."
+      - name: total_damage_to_champion
+        description: "Total damage dealt to champions by the player in the game."
+      - name: physical_damage
+        description: "Total physical damage dealt by the player in the game."
+      - name: magic_damage
+        description: "Total magic damage dealt by the player in the game."
+      - name: true_damage
+        description: "Total true damage dealt by the player in the game."
+      - name: damage_per_minute
+        description: "Damage dealt per minute by the player in the game."
+      - name: damage_percent
+        description: "Percentage of the team's total damage dealt contributed by the player."
+      - name: kills_plus_assits_per_minute
+        description: "Combined kills and assists per minute for the player in the game."
+      - name: kill_participation
+        description: "Percentage of the team's kills in which the player participated."
+      - name: solo_kills
+        description: "Number of solo kills by the player in the game."
+      - name: double_kills
+        description: "Number of double kills by the player in the game."
+      - name: triple_kills
+        description: "Number of triple kills by the player in the game."
+      - name: quadra_kills
+        description: "Number of quadra kills by the player in the game."
+      - name: penta_kills
+        description: "Number of penta kills by the player in the game."
+      - name: gold_difference_at_15
+        description: "Gold difference at 15 minutes for the player in the game."
+      - name: cs_difference_at_15
+        description: "CS difference at 15 minutes for the player in the game."
+      - name: xp_difference_at_15
+        description: "Experience difference at 15 minutes for the player in the game."
+      - name: level_difference_at_15
+        description: "Level difference at 15 minutes for the player in the game."
+      - name: objectives_stolen
+        description: "Number of objectives stolen by the player in the game."
+      - name: damage_dealt_to_turrets
+        description: "Total damage dealt to turrets by the player in the game."
+      - name: damage_dealt_to_buildings
+        description: "Total damage dealt to buildings by the player in the game."
+      - name: total_heal
+        description: "Total amount of healing done by the player in the game."
+      - name: total_heals_on_teammates
+        description: "Total amount of healing done on teammates by the player in the game."
+      - name: damage_self_mitigated
+        description: "Total amount of damage self-mitigated by the player in the game."
+      - name: total_damage_shielded_on_teammates
+        description: "Total amount of damage shielded on teammates by the player in the game."
+      - name: time_ccing_others
+        description: "Total time spent crowd-controlling (CCing) others by the player in the game."
+      - name: total_time_cc_dealt
+        description: "Total time of crowd control (CC) dealt by the player in the game."
+      - name: total_damage_taken
+        description: "Total damage taken by the player in the game."
+      - name: total_time_spent_dead
+        description: "Total time the player spent dead in the game."
+      - name: consumables_purchased
+        description: "Total number of consumables purchased by the player in the game."
+      - name: items_purchased
+        description: "Total number of items purchased by the player in the game."
+      - name: shutdown_bounty_collected
+        description: "Total shutdown bounty collected by the player in the game."
+      - name: shutdown_bounty_lost
+        description: "Total shutdown bounty lost by the player in the game."
+      - name: date_load
+        description: "Date when the data was loaded."
+
+sources:
+  - name: int_player_stats
+    description: "Contains intermediate player statistics."
+    tables:
+      - name: player_stats
+        description: "Intermediate data of player statistics, including various performance metrics and dates."

@@ -2,21 +2,21 @@ with
 
 source as (
 
-    select * from {{ ref('base_matchstats__matchstats') }}
+    select * from {{ ref('int_player_stats') }}
 
 ),
 
 renamed as (
 
-    select
-        id_player,                          
+    select        
+        id_player,
         id_game,
         id_champion,
         level,
         kills,
         deaths,
         assists,
-        {{ get_kda('kills', 'deaths', 'assists') }} as kda,
+        kda,
         cs,
         cs_in_team_s_jungle,
         cs_in_enemy_jungle,
