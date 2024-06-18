@@ -1,3 +1,5 @@
+
+
 with 
 
 source as (
@@ -23,12 +25,13 @@ renamed as (
         sum(true_damage) as total_true_damage,
         avg(damage_per_minute) as average_damage_per_minute,
         sum(damage_dealt_to_turrets) as total_damage_dealt_to_turrets,
-        sum(total_damage_taken) as total_damage_taken
+        sum(total_damage_taken) as total_damage_taken,
+        min(date_load) as date_load
 
     from source
     group by 
         id_player, id_champion
-        
+
 ),
 by_champion as (
     select
@@ -48,7 +51,8 @@ by_champion as (
         total_true_damage,
         average_damage_per_minute,
         total_damage_dealt_to_turrets,
-        total_damage_taken
+        total_damage_taken,
+        r.date_load
 
     from renamed r
     JOIN {{ref('dim_champion')}} d

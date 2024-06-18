@@ -1,3 +1,12 @@
+{{
+    config(
+        materialized='incremental',
+        unique_key='id_ban',
+        on_schema_change='fail'
+    )
+}}
+
+
 with 
 
 source as (
@@ -12,7 +21,8 @@ renamed as (
         id_ban,
         id_game,
         id_team,        
-        ban
+        ban,
+        date_load
         
 
     from source
@@ -20,3 +30,10 @@ renamed as (
 )
 
 select * from renamed
+
+
+{% if is_incremental() %}
+
+  where date_load > (select max(date_load) from {{ this }})
+
+{% endif %}
